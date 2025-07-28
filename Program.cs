@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel.Design;
+using System.Diagnostics;
 using futbol;
 
 internal class Program
@@ -19,37 +20,43 @@ internal class Program
             Console.WriteLine("5. Estadisticas");
             Console.WriteLine("6. Salir");
             Console.WriteLine("Ingrese el número de la sección ha acceder:");
-            int opcion = Convert.ToInt32(Console.ReadLine());
-
-            switch (opcion)
+            string? opcion = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(opcion))
             {
-                case 1:
-                    SubmenuTorneo.MenuTorneo();
-                    break;
-                case 2:
-                    SubmenuEquipo.MenuEquipo();
-                    break;
-                case 3:
-                    SubmenuJugadores.MenuJugador();
-                    break;
-                case 4:
-                    SubmenuTransf.MenuTransferencia();
-                    break;
-                case 5:
-                    SubmenuEstadistica.MenuEstadistica();
-                    break;
-                case 6:
-                    Console.Clear();
-                    Console.WriteLine("Vuleve pronto 👋");
-                    salir = true;
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Opción no valida");
-                    break;
+                continue;
+            }
+            else
+            {
+                switch (opcion)
+                {
+                    case "1":
+                        SubmenuTorneo.MenuTorneo();
+                        break;
+                    case "2":
+                        SubmenuEquipo.MenuEquipo();
+                        break;
+                    case "3":
+                        SubmenuJugadores.MenuJugador();
+                        break;
+                    case "4":
+                        SubmenuTransf.MenuTransferencia();
+                        break;
+                    case "5":
+                        SubmenuEstadistica.MenuEstadistica();
+                        break;
+                    case "6":
+                        Console.Clear();
+                        Console.WriteLine("Vuleve pronto 👋");
+                        salir = true;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Opción no valida");
+                        break;
+
+                }
 
             }
-
         }
     }
 }

@@ -10,16 +10,22 @@ namespace futbol
     {
         public int Id { get; set; }
         public string? Nombre { get; set; }
-        public Torneo(int id, string? nombre)
+        public string? Tipo { get; set; }
+        public DateTime FechaInicio { get; set; }
+        public DateTime FechaFin { get; set; }
+        public Torneo(int id, string? nombre, string? tipo, DateTime fechaInicio, DateTime fechaFin)
         {
             Id = id;
             Nombre = nombre;
+            Tipo = tipo;
+            FechaInicio = fechaInicio;
+            FechaFin = fechaFin;
 
         }
         public Torneo() { }
         public override string ToString()
         {
-            return $"Id: {Id}, Nombre: {Nombre}";
+            return $"Id: {Id}, Nombre: {Nombre}, Tipo: {Tipo}, Fecha de inicio: {FechaInicio} Fecha de fin: {FechaFin}";
         }
         public Torneo Addtorneo()
         {
@@ -55,7 +61,28 @@ namespace futbol
                     break;
                 }
             }
-            return new Torneo(Id, Nombre);
+            Console.WriteLine("¿Qué tipo de torneo es? (Liga/Torneo internacional)");
+            Tipo = Console.ReadLine();
+            Console.WriteLine("Ingrese la fecha de inicio (dd/mm/aaaa)");
+            string? fechaTexto = Console.ReadLine();
+            DateTime fechaInicio;
+            while (!DateTime.TryParse(fechaTexto, out fechaInicio))
+            {
+                Console.WriteLine("⚠️ Fecha inválida. Intente de nuevo (formato: dd/mm/aaaa):");
+                fechaTexto = Console.ReadLine();
+            }
+            FechaInicio = fechaInicio;
+            Console.WriteLine("Ingrese la fecha de finalización (dd/mm/aaaa)");
+            string? fechaText = Console.ReadLine();
+            DateTime fechaFin;
+            while (!DateTime.TryParse(fechaTexto, out fechaFin))
+            {
+                Console.WriteLine("⚠️ Fecha inválida. Intente de nuevo (formato: dd/mm/aaaa):");
+                fechaText = Console.ReadLine();
+            }
+            FechaInicio = fechaFin;
+
+            return new Torneo(Id, Nombre, Tipo, FechaInicio, FechaFin);
         }
     }
 }

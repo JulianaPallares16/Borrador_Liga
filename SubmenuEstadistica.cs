@@ -22,38 +22,44 @@ namespace futbol
                 Console.WriteLine("4. Jugadores Menores Al Promedio De Edad Por Equipo");
                 Console.WriteLine("5. Regresar");
                 Console.WriteLine("Ingrese el número de la acción que desea realizar:");
-                int opj = Convert.ToInt32(Console.ReadLine());
-
-                switch (opj)
+                string? opes = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(opes))
                 {
-                    case 1:
-                        Console.Clear();
-                        Console.WriteLine("== Jugadores Con Más Asistencias En Torneo ==");
-                        Console.ReadKey();
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.WriteLine("== Equipos Con Más Goles En Contra En Torneo ==");
-                        Console.ReadKey();
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine("== Jugadores Más Caros Por Equipo ==");
-                        Console.ReadKey();
-                        break;
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine("== Jugadores Menores Al Promedio De Edad Por Equipo ==");
-                        Console.ReadKey();
-                        break;
-                    case 5:
-                        Console.Clear();
-                        Console.WriteLine("Adios...");
-                        regresar = true;
-                        break;
-                    default:
-                        Console.WriteLine("Opción no valida");
-                        break;
+                    continue;
+                }
+                else
+                {
+                    switch (opes)
+                    {
+                        case "1":
+                            Console.Clear();
+                            Console.WriteLine("== Jugadores Con Más Asistencias En Torneo ==");
+                            Console.ReadKey();
+                            break;
+                        case "2":
+                            Console.Clear();
+                            Console.WriteLine("== Equipos Con Más Goles En Contra En Torneo ==");
+                            Console.ReadKey();
+                            break;
+                        case "3":
+                            Console.Clear();
+                            Console.WriteLine("== Jugadores Más Caros Por Equipo ==");
+                            Console.ReadKey();
+                            break;
+                        case "4":
+                            Console.Clear();
+                            Console.WriteLine("== Jugadores Menores Al Promedio De Edad Por Equipo ==");
+                            Console.ReadKey();
+                            break;
+                        case "5":
+                            Console.Clear();
+                            Console.WriteLine("Adios...");
+                            regresar = true;
+                            break;
+                        default:
+                            Console.WriteLine("Opción no valida");
+                            break;
+                    }
                 }
 
             }
