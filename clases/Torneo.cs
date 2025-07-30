@@ -80,7 +80,7 @@ namespace futbol
                 Console.WriteLine("⚠️ Fecha inválida. Intente de nuevo (formato: dd/mm/aaaa):");
                 fechaText = Console.ReadLine();
             }
-            FechaInicio = fechaFin;
+            FechaFin = fechaFin;
 
             return new Torneo(Id, Nombre, Tipo, FechaInicio, FechaFin);
         }

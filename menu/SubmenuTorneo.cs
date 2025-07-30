@@ -114,27 +114,75 @@ namespace futbol
                             Torneo? Encontrado = torneos.Find(t => t.Id == idActualizar);
                             if (Encontrado != null)
                             {
-                                Console.WriteLine($"Torneo: {Encontrado.Nombre}");
-                                Console.WriteLine("Ingrese el nuevo nombre del torneo");
-                                string? newNombre = Console.ReadLine();
-                                if (torneos.Any(t => t.Nombre?.ToLower() == newNombre?.ToLower()))
+                                Console.WriteLine(Encontrado.ToString());
+                                Console.WriteLine("¿Qué dese actualizar?");
+                                string? respuesta = Console.ReadLine()?.ToLower();
+                                switch (respuesta)
                                 {
-                                    Console.WriteLine("Ese nombre ya está en uso. ");
-                                }
-                                else
-                                {
-                                    Console.WriteLine("¿Está seguro de realizar la actualización? si/no");
-                                    string? answer = Console.ReadLine();
-                                    if (answer?.ToLower() != "si")
-                                    {
+                                    case "nombre":
+                                        Console.WriteLine("Ingrese el nuevo nombre del torneo");
+                                        string? newNombre = Console.ReadLine();
+                                        if (torneos.Any(t => t.Nombre?.ToLower() == newNombre?.ToLower()))
+                                        {
+                                            Console.WriteLine("Ese nombre ya está en uso. ");
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("¿Está seguro de realizar la actualización? si/no");
+                                            string? answer = Console.ReadLine();
+                                            if (answer?.ToLower() != "si")
+                                            {
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Encontrado.Nombre = newNombre;
+                                                Console.WriteLine("✅ Torneo actualizado con éxito. ");
+                                            }
+                                        }
                                         break;
-                                    }
-                                    else
-                                    {
-                                        Encontrado.Nombre = newNombre;
-                                        Console.WriteLine("✅ Torneo actualizado con éxito. ");
-
-                                    }
+                                    case "fecha de inicio":
+                                        Console.WriteLine("Ingrese la nueva fecha de inicio dd/mm/aaaa");
+                                        string? newInicio = Console.ReadLine();
+                                        DateTime Inicio;
+                                        while (!DateTime.TryParse(newInicio, out Inicio))
+                                        {
+                                            Console.WriteLine("⚠️ Fecha inválida. Intente de nuevo (formato: dd/mm/aaaa):");
+                                            newInicio = Console.ReadLine();
+                                        }
+                                        Console.WriteLine("¿Está seguro de realizar la actualización? si/no");
+                                            string? answer2 = Console.ReadLine();
+                                            if (answer2?.ToLower() != "si")
+                                            {
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Encontrado.FechaInicio = Inicio;
+                                                Console.WriteLine("✅ Torneo actualizado con éxito. ");
+                                            }
+                                        break;
+                                    case "fecha de fin":
+                                        Console.WriteLine("Ingrese la nueva fecha de inicio dd/mm/aaaa");
+                                        string? newFin = Console.ReadLine();
+                                        DateTime Fin;
+                                        while (!DateTime.TryParse(newFin, out Fin))
+                                        {
+                                            Console.WriteLine("⚠️ Fecha inválida. Intente de nuevo (formato: dd/mm/aaaa):");
+                                            newInicio = Console.ReadLine();
+                                        }
+                                        Console.WriteLine("¿Está seguro de realizar la actualización? si/no");
+                                            string? answer3 = Console.ReadLine();
+                                            if (answer3?.ToLower() != "si")
+                                            {
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                Encontrado.FechaFin = Fin;
+                                                Console.WriteLine("✅ Torneo actualizado con éxito. ");
+                                            }
+                                        break;
                                 }
                             }
                             else

@@ -10,9 +10,11 @@ internal class Program
         while (!salir)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(new string('*', 53));
             Console.WriteLine("*** Bienvenido Al Gestor De Campeonatos De Fútbol ***");
             Console.WriteLine(new string('*', 53));
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("1. Torneo");
             Console.WriteLine("2. Equipos");
             Console.WriteLine("3. Jugadores");
